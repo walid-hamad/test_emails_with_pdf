@@ -2,3 +2,4 @@ streamlit
 pandas
 pdfkit
 xhtml2pdf
+wkhtmltopdf
