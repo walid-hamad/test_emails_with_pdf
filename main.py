@@ -3,7 +3,6 @@ import streamlit as st
 st.write ('welcome Home')
 
 #username = "walid.hamad89@gmail.com"
-#password = "tcps icow miuj akmq"
 
 import io
 from pdfkit import from_string
