@@ -14,12 +14,26 @@ import smtplib
 from xhtml2pdf import pisa
 
 def send_email_with_pdf(sender_email, receiver_email, subject, message, html_text):
-    # Convert HTML to PDF in memory
-    pdf_data = pisa.CreatePDF(html_text)
+    
+    if not isinstance(html_text, (str, bytes)):
+        raise TypeError("html_content must be a string or bytes object.")
 
+    #file = open("output.pdf", "wb")  # Open in binary write mode
     pdf_buffer = io.BytesIO()
-    pdf_file = from_string(html_text)
-    pdf_buffer.write(pdf_file)
+
+    if isinstance(html_text, str):
+        html_bytes = html_text.encode('utf-8')  # Encode string to bytes
+
+    pisa.CreatePDF(html_bytes, pdf_buffer)
+
+    
+    # Get the generated PDF content as bytes
+    #pdf_bytes = pdf.output(dest='S').encode()  # Save to string and encode
+
+
+    #pdf_buffer = io.BytesIO()
+
+    #pdf_buffer.write(pdf_bytes)
     pdf_data = pdf_buffer.getvalue()
 
     # Create email components
