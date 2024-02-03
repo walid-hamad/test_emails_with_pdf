@@ -41,7 +41,7 @@ def send_email_with_pdf(sender_email, receiver_email, subject, message, html_tex
     smtp_server = "smtp.gmail.com"  # Replace with your SMTP server
     port = 587
     username = "walid.hamad89@gmail.com"
-    password = "tcps icow miuj akmq"
+    password = st.secrets["password"]
 
     with smtplib.SMTP(smtp_server, port) as server:
         server.starttls()
