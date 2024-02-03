@@ -11,11 +11,15 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 import smtplib
+from xhtml2pdf import pisa
 
 def send_email_with_pdf(sender_email, receiver_email, subject, message, html_text):
     # Convert HTML to PDF in memory
+    pdf_data = pisa.CreatePDF(html_text)
+
     pdf_buffer = io.BytesIO()
-    pdf_buffer.write(from_string(html_text))
+    pdf_file = from_string(html_text)
+    pdf_buffer.write(pdf_file)
     pdf_data = pdf_buffer.getvalue()
 
     # Create email components
