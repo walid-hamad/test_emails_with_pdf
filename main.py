@@ -15,8 +15,7 @@ import smtplib
 def send_email_with_pdf(sender_email, receiver_email, subject, message, html_text):
     # Convert HTML to PDF in memory
     pdf_buffer = io.BytesIO()
-    pdf_file = from_string(html_text)
-    pdf_buffer.write(pdf_file)
+    pdf_buffer.write(from_string(html_text))
     pdf_data = pdf_buffer.getvalue()
 
     # Create email components
